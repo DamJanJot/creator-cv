@@ -1,0 +1,381 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: linear-gradient(135deg, #c3d1dc, #eaeaea);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+/* SIDEBAR */
+.sidebar {
+  background: rgba(30, 44, 60, 0.9);
+  color: white;
+  padding: 2rem;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.sidebar-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-menu {
+  width: 100%;
+}
+
+.profile-pic {
+  width: 120px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.sidebar h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar .contact p,
+.sidebar .contact a {
+  color: #ddd;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
+  text-decoration: none; 
+  padding: 4px;
+}
+
+.sidebar .list-btn a,
+.sidebar .porto-btn a {
+  display: block;
+  text-decoration: none;
+  padding-top: 32px;
+  
+  color: azure;
+  
+}
+
+
+.sidebar .list-btn a {
+  font-size: 20px; 
+  margin-bottom: 44px;
+}
+
+.sidebar .porto-btn a {
+  font-size: 32px; 
+}
+
+
+.sidebar .list-btn a:focus,
+.sidebar .list-btn a:hover,
+.sidebar .porto-btn a:focus,
+.sidebar .porto-btn a:hover {
+
+/* background-color: aqua; */
+  color: #4c942a;
+  
+}
+
+h4 .porto-bnt-dosw a:focus,
+h4 .porto-bnt-dosw a:hover {
+  color: #4c942a;
+}
+
+
+/* .sidebar .porto-btn h4,
+.sidebar .porto-btn a {
+  text-decoration: none;
+  padding-top: 24px;
+  
+} */
+
+
+
+ h4 {
+   margin-bottom: 0.2rem;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+ul {
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.linkursy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  vertical-align: baseline;
+}
+
+
+
+
+/* _________________________ */
+
+
+:root {
+  --white: #fff;
+}
+
+
+.guy-image-container {
+  width: 370px;
+  height: 470px;
+  margin: 70px auto;
+  user-select: none;
+  position: relative;
+}
+
+.guy-image-container .shape {
+  position: absolute;
+  object-fit: contain;
+}
+
+
+
+.guy-image-container .background-square-frame {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  border: solid 2px var(--white);
+  transform: rotate(23.5deg);
+  margin-top: 100px;
+  top: 24px;
+  left: 52px;
+}
+
+.guy-image-container::before {
+  content: "";
+  position: absolute;
+  transform: rotate(23.5deg);
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  border: solid 3px transparent;
+  border-color: transparent var(--white) var(--white) transparent;
+  margin-top: 100px;
+  top: 63.3px;
+  left: 69px;
+  z-index: 1;
+}
+
+.invisible-holder {
+  transform: rotate(23.5deg);
+  overflow: hidden;
+  width: 350px;
+  height: 397px;
+}
+
+.invisible-holder .square-frame {
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  background-image: linear-gradient(to bottom, #5454d4, #5e5ee7);
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+
+  border: solid 3px var(--white);
+  margin-top: 100px;
+  position: relative;
+  top: 48px;
+  left: 103px;
+}
+
+.invisible-holder .square-frame img {
+  transform: rotate(-23.5deg);
+  width: 350px;
+  height: 433px;
+  object-fit: contain;
+  position: relative;
+  top: -148px;
+  left: -75px;
+}
+
+
+/* ____________________ */
+
+
+/* CONTENT */
+.content {
+  background: white;
+  padding: 2rem 3rem;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #ddd;
+}
+
+/* HEADINGS */
+.content h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+/* JOB EXPERIENCE */
+.job h4 {
+  margin-bottom: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.job ul {
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+/* LINKS */
+.sidebar .contact p:focus,
+.sidebar .contact a:focus,
+a:hover {
+  color: #4c942a;
+  text-decoration: underline;
+}
+
+/* SKILLS GALLERY */
+.gallery li {
+  list-style: none;
+}
+
+.gallery a {
+  display: block;
+}
+
+.gallery a img {
+  transition: all 0.5s ease-in-out;
+  width: 80px;
+}
+
+.gallery a:hover img,
+.gallery a:focus img {
+  transform: scale(1.1);
+}
+
+/* PHONE BUTTON */
+#phoneButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 30%;
+    border-right: 1px solid #ccc;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    padding: 1.25rem 1.5rem;
+    overflow-y: auto;
+  }
+
+  .sidebar-menu {
+    margin-top: 0.75rem;
+  }
+
+  .desktop-only.profile-pic {
+    width: min(58%, 210px);
+    max-height: 42vh;
+    object-fit: contain;
+  }
+
+  .sidebar h1 {
+    font-size: 1.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar .contact h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar .list-btn a,
+  .sidebar .porto-btn a {
+    padding-top: 0.6rem;
+  }
+
+  .sidebar .list-btn a {
+    margin-bottom: 0.8rem;
+  }
+
+  .sidebar hr {
+    margin: 0.8rem 0;
+  }
+
+  .content {
+    width: 70%;
+    border-top: none;
+  }
+}
+
+
+.profile-pic {
+  width: 50%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: block;
+    height: auto;
+  }
+
+  .sidebar-menu {
+    margin-top: 0;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .profile-pic {
+    width: 20%; 
+    
+  }
+}
