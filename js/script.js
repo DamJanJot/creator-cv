@@ -43,8 +43,40 @@ function parseLines(value) {
     .filter(line => line.length > 0);
 }
 
+const htmlEscapeMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+};
+
 function safeText(value, fallback = '') {
-  return value ? value.replace(/</g, '&lt;').replace(/>/g, '&gt;') : fallback;
+  const text = value ? String(value) : fallback;
+  return text.replace(/[&<>"']/g, character => htmlEscapeMap[character]);
+}
+
+function safeUrl(value) {
+  if (!value) {
+    return '';
+  }
+
+  try {
+    const url = new URL(value);
+    return ['http:', 'https:'].includes(url.protocol) ? safeText(url.href) : '';
+  } catch (error) {
+    return '';
+  }
+}
+
+function safeEmailHref(value) {
+  const email = value ? String(value).trim() : '';
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return '';
+  }
+
+  return `mailto:${safeText(email)}`;
 }
 
 function createList(items) {
@@ -105,6 +137,11 @@ function buildCVHTML(data) {
   const aboutMe = safeText(data.aboutMe);
   const photoHtml = data.photoData ? `<div class="photo-holder" style="margin-bottom: 1rem;"><img src="${data.photoData}" alt="Zdjęcie w CV" style="width: 100%; border-radius: 16px; object-fit: cover;"></div>` : '';
   const consentText = 'Wyrażam zgodę na przetwarzanie danych osobowych zawartych w niniejszym dokumencie do realizacji procesu rekrutacji zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO).';
+  const emailHref = safeEmailHref(data.email);
+  const websiteHref = safeUrl(data.website);
+  const websiteHtml = data.website
+    ? `<p>Strona: ${websiteHref ? `<a href="${websiteHref}" target="_blank" rel="noopener noreferrer">${safeText(data.website)}</a>` : safeText(data.website)}</p>`
+    : '';
 
   return `
     <div class="cv-print-area">
@@ -117,9 +154,9 @@ function buildCVHTML(data) {
           </div>
           <div class="sidebar-menu">
             <div class="contact py-1">
-              ${data.email ? `<p>E-mail: <a href="mailto:${safeText(data.email)}">${safeText(data.email)}</a></p>` : ''}
+              ${data.email ? `<p>E-mail: ${emailHref ? `<a href="${emailHref}">${safeText(data.email)}</a>` : safeText(data.email)}</p>` : ''}
               ${data.phone ? `<p>Telefon: ${safeText(data.phone)}</p>` : ''}
-              ${data.website ? `<p>Strona: <a href="${safeText(data.website)}" target="_blank">${safeText(data.website)}</a></p>` : ''}
+              ${websiteHtml}
             </div>
           </div>
         </aside>
